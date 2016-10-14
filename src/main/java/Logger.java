@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Logger {
@@ -9,6 +8,7 @@ public class Logger {
     private final Level lvlInfo = new Level("INFO", 0);
     private final Level lvlWarning = new Level("WARNING", 1);
     private final Level lvlDebug = new Level("DEBUG", 2);
+    static private LoggerSink sink = new LoggerSink();
 
     List<Level> logLevels = new ArrayList<Level>();
 
@@ -20,28 +20,26 @@ public class Logger {
         logLevels.add(new Level("DEBUG", 2));
     }
 
+    static Logger createLogger(String loggerName) {
+        return new Logger(loggerName);
+    }
+
     void debug(String msg) {
         if(isLvlAccurate(lvlDebug)) {
-            createMsg(lvlDebug.getName(), this.loggerName, msg);
+            sink.createMsg(lvlDebug.getName(), this.loggerName, msg);
         }
     }
 
     void info(String msg) {
         if(isLvlAccurate(lvlInfo)) {
-            createMsg(lvlInfo.getName(), this.loggerName, msg);
+            sink.createMsg(lvlInfo.getName(), this.loggerName, msg);
         }
     }
 
     void warning(String msg) {
         if(isLvlAccurate(lvlWarning)) {
-            createMsg(lvlWarning.getName(), this.loggerName, msg);
+            sink.createMsg(lvlWarning.getName(), this.loggerName, msg);
         }
-
-    }
-
-    private void createMsg(String level, String loggerName, String msg) {
-        Date currentDate = new Date();
-        System.out.println("{" + currentDate.toString() + "} {" + loggerName + "} "  + "[{ "+ level + "}]:" + "{" + msg + "}");
     }
 
     public void useLevel(Level setLvl) {

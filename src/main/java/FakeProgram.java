@@ -2,7 +2,7 @@ public class FakeProgram {
 
     public static void main(String[] args){
 
-        Logger Log = new Logger("moj sliczny logger");
+        Logger Log = Logger.createLogger("moj sliczny logger");
 
         Log.useLevel(new Level("NONE", -1));
 
