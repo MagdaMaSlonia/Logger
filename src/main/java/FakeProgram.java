@@ -1,8 +1,5 @@
 public class FakeProgram {
 
-
-
-
     public static void main(String[] args){
 
         Logger Log = new Logger("moj sliczny logger");
@@ -12,6 +9,5 @@ public class FakeProgram {
         Log.debug("ERRROR");
         Log.warning("WARNING");
         Log.info("INFOOO");
-
     }
 }

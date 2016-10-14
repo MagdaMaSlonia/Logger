@@ -12,7 +12,6 @@ public class Level implements Comparable<Level>{
         return name;
     }
 
-
     @Override
     public int compareTo(Level o) {
         if(o != null) {
