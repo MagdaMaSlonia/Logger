@@ -4,7 +4,7 @@ import java.util.List;
 public class Logger {
 
     private final String loggerName;
-    private Level globalLvl;
+    private Level globalLvl = new Level("NONE", -1);
     private final Level lvlInfo = new Level("INFO", 0);
     private final Level lvlWarning = new Level("WARNING", 1);
     private final Level lvlDebug = new Level("DEBUG", 2);
